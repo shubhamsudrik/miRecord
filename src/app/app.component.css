@@ -1,0 +1,25 @@
+.dropdown-container {
+    position: relative;
+    margin-bottom: 20px;
+  }
+
+  .dropdown-container select {
+    width: 200%;
+    padding: 6px;
+    font-size: 16px;
+    border: 1px solid #040404;
+    border-radius: 5px;
+    box-shadow: none;
+  }
+.table{
+  border: #040404;
+  width: fit-content;
+  
+}
+
+  #nav{
+    display: flex;
+    /* align-items: center; */
+    /* justify-content: center; */
+    justify-content: space-around;
+  }

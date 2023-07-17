@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 50%;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 8px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+  </style>
+</head>
+<body>
+  <soho-icons-new></soho-icons-new>
+  <soho-icons-empty-new></soho-icons-empty-new>
+
+  <div class="form-responsive row top-padding">
+    <div class="field" id="nav">
+      <div class="dropdown-container">
+        <label for="program" class="label">Select Program:</label>
+        <select id="program" soho-dropdown (change)="onClickMIRecord($event.target.value)">
+          <option></option>
+          <option *ngFor="let item of lineitems" [value]="item.MINM">{{ item.MINM }}</option>
+        </select>
+      </div>
+      <div class="dropdown-container">
+        <label id="in" for="transaction" class="label">Select Transaction:</label>
+        <select soho-dropdown id="transaction" (change)="onClickTransaction($event.target.value)" [(ngModel)]="selectedTransaction">
+          <option *ngFor="let item of transData" [value]="item.TRNM">{{ item.TRNM }}</option>
+        </select>
+      </div>
+
+    </div>
+  </div>
+  <!-- <div *ngIf="selectedTransactionData"> -->
+    <div  style="width: 100px;">
+    <h4>Input Fields:</h4>
+    <!-- id="excel-table"- is use for convert into excel purpose -->
+    <table align="left" id="excel-table">
+      <thead>
+        <tr>
+          <th>Field Name</th>
+          <th>Field Description</th>
+          <th>Text</th>
+          <th>Form Position</th>
+          <th>To Position</th>
+          <th>Length</th>
+          <th>Field Type </th>
+          <th>Mandatory</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of transDetails">
+          <td>{{ item.FLNM }}</td>
+          <td> {{item.FLDS}}</td>
+          <td>{{ item.TXT1 }}</td>
+          <td>{{ item.FRPO }}</td>
+          <td>{{ item.TOPO }}</td>
+          <td>{{ item.LENG }}</td>
+          <td>{{ item.TYPE }}</td>
+          <td>{{ item.MAND }}</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  
+  <!-- </div> -->
+  <!-- ********************************************************************************************************************************** -->
+  <div align="center" style=" margin: auto; width: 50%;">
+    <button class="btn btn-primary"  (click)="exportexcel()">Export to Excel</button> <br>
+   
+    <!-- <table align="right" id="excel-table">
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Username</th>
+        <th>Email</th>
+        <th>FLDS</th>
+        <th>FLMS</th>
+      </tr>
+      <tr *ngFor="let item of transDetails">
+        <td>{{ item.FLNM }}</td>
+          <td> {{item.FLDS}}</td>
+          <td>{{ item.TXT1 }}</td>
+          <td>{{ item.FRPO }}</td>
+          <td>{{ item.TOPO }}</td>
+          <td>{{ item.LENG }}</td>
+          <td>{{ item.TYPE }}</td>
+          <td>{{ item.MAND }}</td>
+      </tr>
+    </table> -->
+  </div>
+</body>
+</html>
+
