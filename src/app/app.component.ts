@@ -147,9 +147,9 @@ exportexcel(): void {
 
    for (let i = 0; i < rows.length; i++) {
      const columns = rows[i].getElementsByTagName('td');
-     const cellValue1 = columns[1]?.innerText;
+     const cellValue1 = columns[1]?.innerText; // 1st column value
      const cellValue2 = columns[5]?.innerText;
-     const cellValue3 = columns[6]?.innerText; // 6th column value
+     const cellValue3 = columns[6]?.innerText;
      const cellValue4 = columns[7]?.innerText;
      const cellValue5 = columns[0]?.innerText;
 
@@ -201,10 +201,8 @@ exportexcel(): void {
 
    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
 
-
-   XLSX.writeFile(wb, this.fileName);
+   const fileName = this.selectedMINM + " " + this.selectedTransaction
+   XLSX.writeFile(wb, fileName + ".xlsx");
  }
-
-
 
 }

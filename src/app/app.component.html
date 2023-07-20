@@ -47,7 +47,6 @@
     <table align="left" id="excel-table">
       <thead>
         <tr>
-         <th></th>
           <th>Field Name</th>
           <th>Field Description</th>
           <th>Text</th>
@@ -61,7 +60,7 @@
       <tbody>
         <tr *ngFor="let item of transDetails">
           <td>{{ item.FLNM }}</td>
-          <td> {{item.FLDS}}</td>
+          <td>{{item.FLDS}}</td>
           <td>{{ item.TXT1 }}</td>
           <td>{{ item.FRPO }}</td>
           <td>{{ item.TOPO }}</td>
@@ -73,7 +72,7 @@
     </table>
     </div>
 
->
+
   <div align="center" style=" margin: auto; width: 50%;">
     <button class="btn btn-primary"  (click)="exportexcel()">Export to Excel</button> <br>
 
