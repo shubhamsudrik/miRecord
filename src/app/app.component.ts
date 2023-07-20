@@ -131,70 +131,9 @@ export class AppComponent extends CoreBase implements OnInit {
 ngoninit(){
   console.log(this.transDetails);
 }
-  // ***************************************************************************************************************
 
   fileName= 'ExcelSheet.xlsx';
-// .
-// //   exportexcel(): void {
-// //     const element = document.getElementById('excel-table'); //excel-table = Id
-// //     const rows = element.getElementsByTagName('tr');
-// //     const columnData: string[] = [];
 
-
-// //     // Iterate over the rows and extract the first column data
-// //     for (let i = 0; i < rows.length; i++) {
-// //       const columns = rows[i].getElementsByTagName('td');
-// //       console.log(columns);
-// //       if (columns.length > 0) {
-// //         const cellValue = columns[0].innerText; //[column_index_value
-// //         columnData.push(cellValue);
-
-// //       }
-
-// //     }
-// //     // Create a new workbook and worksheet
-// //     const wb: XLSX.WorkBook = XLSX.utils.book_new();
-// //     const ws: XLSX.WorkSheet = XLSX.utils.aoa_to_sheet([columnData]);
-
-// //     // Add the worksheet to the workbook
-// //     XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
-
-// //     // Save the workbook as Excel file
-// //     XLSX.writeFile(wb, this.fileName);
-// //   }
-// // exportexcel(): void {
-// //    const element = document.getElementById('excel-table');
-// //    const rows = element.getElementsByTagName('tr');
-// //    const columnData: string[][] = [];
-
-// // console.log(columnData);
-// // console.log(rows);
-// // console.log(element);
-
-// //    // Iterate over the rows and extract the data from each column
-// //    for (let i = 0 ; i < rows.length ; i++) {
-
-// //      const columns = rows[i].getElementsByTagName('td');
-// //      for (let j = 0 ; j < 2 ; j++) {
-// //        const cellValue = columns[j].innerText;
-// //        if (!columnData[j]) {
-// //          columnData[j] = [];
-// //        }
-// //        columnData[j].push(cellValue);
-// //      }
-// // }
-
-// //    // Create a new workbook and worksheet
-// //    const wb: XLSX.WorkBook = XLSX.utils.book_new();
-// //    const ws: XLSX.WorkSheet = XLSX.utils.aoa_to_sheet(columnData);
-
-// //    // Add the worksheet to the workbook
-// //    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
-
-// //    // Save the workbook as an Excel file
-// //    XLSX.writeFile(wb, this.fileName);
-// //  }
-// .
 
 exportexcel(): void {
    const element = document.getElementById('excel-table');
@@ -205,11 +144,11 @@ exportexcel(): void {
    console.log(rows);
    console.log(element);
 
-   // Iterate over the rows and extract the data from each column
-   for (let i = 0; i < rows.length; i++) { // This code for printing columns
+
+   for (let i = 0; i < rows.length; i++) {
      const columns = rows[i].getElementsByTagName('td');
-     const cellValue1 = columns[1]?.innerText; // 2nd column value in excel//This code for printing rows //[]-Assign index value
-     const cellValue2 = columns[5]?.innerText; // 5th column value
+     const cellValue1 = columns[1]?.innerText;
+     const cellValue2 = columns[5]?.innerText;
      const cellValue3 = columns[6]?.innerText; // 6th column value
      const cellValue4 = columns[7]?.innerText;
      const cellValue5 = columns[0]?.innerText;
@@ -256,14 +195,13 @@ exportexcel(): void {
      }
    }
 
-   // Create a new workbook and worksheet
+
    const wb: XLSX.WorkBook = XLSX.utils.book_new();
    const ws: XLSX.WorkSheet = XLSX.utils.aoa_to_sheet(columnData);
 
-   // Add the worksheet to the workbook
    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
 
-   // Save the workbook as an Excel file
+
    XLSX.writeFile(wb, this.fileName);
  }
 
