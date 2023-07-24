@@ -28,7 +28,6 @@
 
     <div  style="width: 100px;">
     <h4>Input Fields:</h4>
-    <!-- id="excel-table"- is use for convert into excel purpose -->
     <table align="left" id="excel-table">
       <thead>
         <tr>
@@ -58,34 +57,13 @@
     </table>
     </div>
 
-  <!-- </div> -->
-  <!-- ********************************************************************************************************************************** -->
-  <div align="center" style=" margin: auto; width: 50%;">
+   <div align="center" style=" margin: auto; width: 50%;">
     <button class="btn btn-primary"  (click)="exportexcel()">Export to Excel</button>
     <br>
     <div align="right"><br><br>
     <app-file-upload></app-file-upload>
     </div>
-    <!-- <table align="right" id="excel-table">
-      <tr>
-        <th>Id</th>
-        <th>Name</th>
-        <th>Username</th>
-        <th>Email</th>
-        <th>FLDS</th>
-        <th>FLMS</th>
-      </tr>
-      <tr *ngFor="let item of transDetails">
-        <td>{{ item.FLNM }}</td>
-          <td> {{item.FLDS}}</td>
-          <td>{{ item.TXT1 }}</td>
-          <td>{{ item.FRPO }}</td>
-          <td>{{ item.TOPO }}</td>
-          <td>{{ item.LENG }}</td>
-          <td>{{ item.TYPE }}</td>
-          <td>{{ item.MAND }}</td>
-      </tr>
-    </table> -->
+
   </div><br><br><br>
 
 </body>
