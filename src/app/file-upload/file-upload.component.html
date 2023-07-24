@@ -1,0 +1,18 @@
+ <input type="file" (change)="onFileChange($event)">
+<div *ngIf="data">
+  <h2>File Data:</h2>
+  <table>
+    <thead>
+      <tr>
+        <th *ngFor="let header of data[0]">{{ header }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of data.slice(1)">
+        <td *ngFor="let cell of row">{{ cell }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div><br><br>
+
+<button class="btn btn-primary" >Submit Data </button>

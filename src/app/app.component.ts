@@ -131,9 +131,119 @@ export class AppComponent extends CoreBase implements OnInit {
 ngoninit(){
   console.log(this.transDetails);
 }
+  // ***************************************************************************************************************
+//   Angular to Excel convert - process
+//if convert angular to excel -1. npm install xlsx
+                           // -2- npm install file-saver
+                           // -3- import * as XLSX from 'xlsx';
+                           // /* -4-
+                           // export class AppComponent {
+                           //       /*name of the excel-file which will be downloaded. */
+                           //       fileName= 'ExcelSheet.xlsx';
 
+                           //       exportexcel(): void
+                           //          {
+                           //             /* table id is passed over here */
+                           //             let element = document.getElementById('excel-table'); //id -excel-table
+                           //             const ws: XLSX.WorkSheet =XLSX.utils.table_to_sheet(element);
+
+                           //             /* generate workbook and add the worksheet */
+                           //             const wb: XLSX.WorkBook = XLSX.utils.book_new();
+                           //             XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+
+                           //             /* save to file */
+                           //             XLSX.writeFile(wb, this.fileName);
+
+                           //          }
+                           //       }
+                           // -5-<table id="excel-table">
+                           //     <tr>
+                           //     <th>ContainerNo</th>
+                           //     <th>SelCondition</th>
+                           //     <th> ContainerCondition</th>
+                           //     <th>GateInDateTime</th>
+                           //  </tr>
+                           //  <tr *ngFor="let sup of Company">
+                           //  // This is the binding part.
+                           //     <td>{{ sup.ContainerNo }}</td>
+                           //     <td>{{ sup.SelCondition }}</td>
+                           //     <td>{{ sup.ContainerCondition }}</td>
+                           //     <td>{{ sup.GateInDateTime }}</td>
+                           //  </tr>
+                           // </table>
+// *********************************************************************************************************************************
+a='a';
+// *************************************************************************************************************************
+// Upload excel file into angular
+// step-1-npm install ngx-file-drop --save
+//      -2-ng generate component file-upload
+//
+//
+//
+// *************************************************************************************************************************
   fileName= 'ExcelSheet.xlsx';
 
+// .
+// //   exportexcel(): void {
+// //     const element = document.getElementById('excel-table'); //excel-table = Id
+// //     const rows = element.getElementsByTagName('tr');
+// //     const columnData: string[] = [];
+
+
+// //     // Iterate over the rows and extract the first column data
+// //     for (let i = 0; i < rows.length; i++) {
+// //       const columns = rows[i].getElementsByTagName('td');
+// //       console.log(columns);
+// //       if (columns.length > 0) {
+// //         const cellValue = columns[0].innerText; //[column_index_value
+// //         columnData.push(cellValue);
+
+// //       }
+
+// //     }
+// //     // Create a new workbook and worksheet
+// //     const wb: XLSX.WorkBook = XLSX.utils.book_new();
+// //     const ws: XLSX.WorkSheet = XLSX.utils.aoa_to_sheet([columnData]);
+
+// //     // Add the worksheet to the workbook
+// //     XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+
+// //     // Save the workbook as Excel file
+// //     XLSX.writeFile(wb, this.fileName);
+// //   }
+// // exportexcel(): void {
+// //    const element = document.getElementById('excel-table');
+// //    const rows = element.getElementsByTagName('tr');
+// //    const columnData: string[][] = [];
+
+// // console.log(columnData);
+// // console.log(rows);
+// // console.log(element);
+
+// //    // Iterate over the rows and extract the data from each column
+// //    for (let i = 0 ; i < rows.length ; i++) {
+
+// //      const columns = rows[i].getElementsByTagName('td');
+// //      for (let j = 0 ; j < 2 ; j++) {
+// //        const cellValue = columns[j].innerText;
+// //        if (!columnData[j]) {
+// //          columnData[j] = [];
+// //        }
+// //        columnData[j].push(cellValue);
+// //      }
+// // }
+
+// //    // Create a new workbook and worksheet
+// //    const wb: XLSX.WorkBook = XLSX.utils.book_new();
+// //    const ws: XLSX.WorkSheet = XLSX.utils.aoa_to_sheet(columnData);
+
+// //    // Add the worksheet to the workbook
+// //    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+
+// //    // Save the workbook as an Excel file
+// //    XLSX.writeFile(wb, this.fileName);
+// //  }
+// .
 
 exportexcel(): void {
    const element = document.getElementById('excel-table');
@@ -144,12 +254,12 @@ exportexcel(): void {
    console.log(rows);
    console.log(element);
 
-
-   for (let i = 0; i < rows.length; i++) {
+   // convert into excel and iterate row as columns
+   for (let i = 0; i < rows.length; i++) { // This code for printing columns
      const columns = rows[i].getElementsByTagName('td');
-     const cellValue1 = columns[1]?.innerText; // 1st column value
-     const cellValue2 = columns[5]?.innerText;
-     const cellValue3 = columns[6]?.innerText;
+     const cellValue1 = columns[1]?.innerText; // 2nd column value in excel//This code for printing rows //[]-Assign index value
+     const cellValue2 = columns[5]?.innerText; // 5th column value
+     const cellValue3 = columns[6]?.innerText; // 6th column value
      const cellValue4 = columns[7]?.innerText;
      const cellValue5 = columns[0]?.innerText;
 
@@ -195,14 +305,19 @@ exportexcel(): void {
      }
    }
 
-
+   // Create a new workbook and worksheet
    const wb: XLSX.WorkBook = XLSX.utils.book_new();
    const ws: XLSX.WorkSheet = XLSX.utils.aoa_to_sheet(columnData);
 
+   // Add the worksheet to the workbook
    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
 
-   const fileName = this.selectedMINM + " " + this.selectedTransaction
-   XLSX.writeFile(wb, fileName + ".xlsx");
+                  //give excel file name is program+ transaction
+  const fileName = this.selectedMINM + " " + this.selectedTransaction
+   // Save the workbook as an Excel file
+   XLSX.writeFile(wb, fileName + ".xlsx"); // need to add ".XLSX" without this file type should be change so need ".XLSX"
  }
+
+
 
 }
